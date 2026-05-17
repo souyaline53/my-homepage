@@ -1,0 +1,94 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const pageTitle = "Contact | にちか.com";
+
+const snsLinks = [
+	{ name: "Instagram", url: "https://www.instagram.com/nichika", icon: "📸", color: "#E1306C" },
+	{ name: "Official LINE", url: "https://line.me/R/ti/p/@nichika", icon: "💬", color: "#00B900" },
+	{ name: "X (Twitter)", url: "https://x.com/nichika", icon: "🐦", color: "#000000" },
+	{ name: "Email", url: "mailto:info@nichika.com", icon: "✉️", color: "#0070f3" },
+];
+---
+
+<BaseLayout title={pageTitle}>
+	<main class="container">
+		<div class="page-header">
+			<h1>Contact</h1>
+			<p class="lead">
+				お仕事のご依頼、ファンクラブに関するお問い合わせ、<br />
+				またはにちかへのメッセージは、以下の各窓口よりお気軽にご連絡ください。
+			</p>
+		</div>
+
+		<div class="contact-grid">
+			{snsLinks.map((sns) => (
+				<a href={sns.url} target="_blank" rel="noopener noreferrer" class="contact-card">
+					<span class="icon">{sns.icon}</span>
+					<span class="name">{sns.name}</span>
+					<span class="arrow">→</span>
+				</a>
+			))}
+		</div>
+
+		<div class="note">
+			<h3>お問い合わせに関するご注意</h3>
+			<p>
+				※全てのメッセージに目を通しておりますが、内容によってはお返事にお時間をいただく場合や、<br />
+				ご返信できかねる場合がございます。あらかじめご了承ください。
+			</p>
+		</div>
+	</main>
+</BaseLayout>
+
+<style>
+	.container { max-width: 900px; margin: 0 auto; padding: 8rem 1rem 4rem; }
+	.page-header { margin-bottom: 5rem; text-align: center; }
+	h1 { font-size: 3.5rem; margin-bottom: 1rem; }
+	.lead { font-size: 1.1rem; color: #666; line-height: 1.8; }
+
+	.contact-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 2rem;
+		margin-bottom: 5rem;
+	}
+
+	.contact-card {
+		display: flex;
+		align-items: center;
+		padding: 2rem;
+		background: #fff;
+		border: 1px solid #eee;
+		border-radius: 15px;
+		text-decoration: none;
+		color: #333;
+		transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+		box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+	}
+
+	.contact-card:hover {
+		transform: translateY(-5px);
+		box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+		border-color: var(--accent-color);
+	}
+
+	.icon { font-size: 2rem; margin-right: 1.5rem; }
+	.name { font-size: 1.2rem; font-weight: bold; flex: 1; }
+	.arrow { font-size: 1.2rem; color: #ccc; transition: transform 0.3s; }
+	.contact-card:hover .arrow { transform: translateX(5px); color: var(--accent-color); }
+
+	.note {
+		background: #fafafa;
+		padding: 2.5rem;
+		border-radius: 15px;
+		color: #888;
+		font-size: 0.9rem;
+	}
+	.note h3 { color: #555; margin-top: 0; font-size: 1.1rem; }
+
+	@media (max-width: 600px) {
+		.contact-grid { grid-template-columns: 1fr; }
+		h1 { font-size: 2.5rem; }
+	}
+</style>

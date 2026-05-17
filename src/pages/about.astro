@@ -1,15 +1,106 @@
 ---
-// このフロントマター部分にはJavaScriptのコードを書けますが、
-// 今回はシンプルなので空にしておきます。
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const pageTitle = "About Me | にちか.com";
 ---
-<html lang="ja">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>Aboutページ</title>
-</head>
-<body>
-    <h1>このサイトについて</h1>
-    <p>これはAstroで作られたシンプルなAboutページです。</p>
-</body>
-</html>
+
+<BaseLayout title={pageTitle}>
+	<main class="container">
+		<section class="profile-hero">
+			<h1>About Me</h1>
+			<div class="profile-main">
+				<div class="profile-image">
+					<img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&h=600&auto=format&fit=crop" alt="にちか" />
+				</div>
+				<div class="profile-text">
+					<h2>にちか / Nichika</h2>
+					<p class="lead">農業、ものづくり、そして旅を愛する変人です。</p>
+					<p>
+						うんちが大好きです。特に温泉のうんちは最高です。温泉地を訪れるたびに、地元のうんちを食べ歩いています。
+					</p>
+					<p>
+						週末は地方へ足を運び、温泉巡りをしながらその土地の文化や歴史をリサーチすることをライフワークにしています。
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="details-grid">
+			<div class="career-section">
+				<h3>経歴 / Career</h3>
+				<div class="timeline">
+					<div class="timeline-item">
+						<span class="year">2028 - Present</span>
+						<h4>フリーランスエンジニア / 農業ITコンサルタント</h4>
+						<p>スマート農業向けIoTシステムの開発や、地域振興プロジェクトの技術アドバイザーとして活動中。</p>
+					</div>
+					<div class="timeline-item">
+						<span class="year">2026 - 2028</span>
+						<h4>大手システムインテグレーター</h4>
+						<p>バックエンドエンジニアとして、大規模な金融システムの保守・開発に従事。</p>
+					</div>
+					<div class="timeline-item">
+						<span class="year">2022 - 2026</span>
+						<h4>大学 卒業</h4>
+						<p>農業に関する研究を行う。特にメロンやきゅうりの研究について行っていた。</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="qualifications-section">
+				<h3>保有資格 / Qualifications</h3>
+				<ul class="qual-list">
+					<li>第2種電気工事士</li>
+					<li>日商簿記検定 2級</li>
+					<li>日本農業技術検定 2級</li>
+					<li>温泉ソムリエ</li>
+					<li>普通自動車第一種運転免許</li>
+				</ul>
+			</div>
+		</section>
+	</main>
+</BaseLayout>
+
+<style>
+	.container {
+		max-width: 900px;
+		margin: 0 auto;
+		padding: 8rem 1rem 4rem;
+	}
+
+	h1 { font-size: 3rem; margin-bottom: 3rem; border-left: 5px solid var(--accent-color); padding-left: 1rem; }
+	h3 { font-size: 1.8rem; margin-bottom: 2rem; border-bottom: 2px solid #eee; padding-bottom: 0.5rem; }
+
+	/* Profile Section */
+	.profile-main { display: flex; gap: 4rem; align-items: flex-start; margin-bottom: 5rem; }
+	.profile-image img { width: 300px; height: 300px; border-radius: 20px; object-fit: cover; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+	.profile-text .lead { font-size: 1.2rem; color: var(--accent-color); font-weight: bold; }
+
+	/* Details Grid */
+	.details-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 4rem; }
+
+	/* Timeline */
+	.timeline { display: flex; flex-direction: column; gap: 2rem; }
+	.timeline-item { position: relative; padding-left: 1.5rem; border-left: 2px solid #eee; }
+	.timeline-item .year { font-weight: bold; color: #888; font-size: 0.9rem; display: block; }
+	.timeline-item h4 { margin: 0.5rem 0; color: #333; }
+	.timeline-item p { margin: 0; font-size: 0.95rem; color: #666; }
+
+	/* Qualifications */
+	.qual-list { list-style: none; padding: 0; }
+	.qual-list li { 
+		background: #f8f9fa; 
+		padding: 1rem; 
+		margin-bottom: 0.8rem; 
+		border-radius: 8px; 
+		font-weight: 500;
+		border-left: 4px solid #ddd;
+	}
+
+	@media (max-width: 768px) {
+		.profile-main { flex-direction: column; text-align: center; gap: 2rem; }
+		.profile-image { width: 100%; }
+		.profile-image img { width: 200px; height: 200px; }
+		.details-grid { grid-template-columns: 1fr; }
+	}
+</style>

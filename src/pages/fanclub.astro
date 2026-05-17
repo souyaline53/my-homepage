@@ -1,0 +1,118 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const pageTitle = "Fan Club | にちか.com";
+---
+
+<BaseLayout title={pageTitle}>
+	<main class="container">
+		<div class="page-header">
+			<h1>Fan Club</h1>
+			<p class="lead">にちかの活動をより身近に。特別な体験と交流をお届けするコミュニティです。</p>
+		</div>
+
+		<section class="section">
+			<h2 class="section-title">会員特典 / Benefits</h2>
+			<div class="benefits-grid">
+				<div class="benefit-card">
+					<div class="benefit-num">01</div>
+					<h3>会報誌(写真集付き！)の送付</h3>
+					<p>年4回、活動の裏側や旅先での撮り下ろし写真、ここだけのコラムを掲載した会報誌をお届けします。</p>
+				</div>
+				<div class="benefit-card">
+					<div class="benefit-num">02</div>
+					<h3>カレンダーの送付</h3>
+					<p>毎年12月に、にちかが厳選した日本の原風景を収めた翌年のオリジナル卓上カレンダーをお送りします。</p>
+				</div>
+				<div class="benefit-card">
+					<div class="benefit-num">03</div>
+					<h3>特別Dinner Showへのご招待</h3>
+					<p>年に一度開催される、会員限定のディナーショーへ優先的にご招待。にちかと直接交流できる貴重な機会です。</p>
+				</div>
+			</div>
+		</section>
+
+		<div class="info-wrapper">
+			<section class="info-section">
+				<h2 class="section-title">会費について / Fees</h2>
+				<div class="info-card">
+					<div class="fee-row">
+						<span>入会金</span>
+						<span class="price">1,000円 <small>(税込)</small></span>
+					</div>
+					<div class="fee-row">
+						<span>年会費</span>
+						<span class="price">5,000円 <small>(税込)</small></span>
+					</div>
+					<p class="fee-note">※更新時の事務手数料はかかりません。2年目以降は年会費のみで継続いただけます。</p>
+				</div>
+			</section>
+
+			<section class="info-section">
+				<h2 class="section-title">入会方法 / How to Join</h2>
+				<div class="info-card">
+					<ol class="step-list">
+						<li>下部の「入会を申し込む」ボタンより、専用フォームへお進みください。</li>
+						<li>必要事項を入力し送信後、登録メールアドレスへ決済のご案内が届きます。</li>
+						<li>クレジットカードまたは銀行振込にてお支払い。入金確認後、会員番号を発行いたします。</li>
+					</ol>
+				</div>
+			</section>
+		</div>
+
+		<div class="cta-area">
+			<a href="/contact" class="join-btn">入会を申し込む</a>
+			<p class="small">※お手続き完了後、2週間以内に初回の会員特典をお送りします。</p>
+		</div>
+	</main>
+</BaseLayout>
+
+<style>
+	.container { max-width: 900px; margin: 0 auto; padding: 8rem 1rem 4rem; }
+	.page-header { margin-bottom: 5rem; text-align: center; }
+	h1 { font-size: 3.5rem; margin-bottom: 1rem; }
+	.lead { font-size: 1.1rem; color: #666; max-width: 600px; margin: 0 auto; }
+
+	.section { margin-bottom: 6rem; }
+	.section-title { font-size: 1.8rem; margin-bottom: 2.5rem; text-align: center; color: #222; }
+
+	/* Benefits Grid */
+	.benefits-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+	.benefit-card { background: #fff; padding: 2rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #eee; position: relative; }
+	.benefit-num { font-size: 3rem; font-weight: bold; color: rgba(0, 112, 243, 0.1); position: absolute; top: 1rem; right: 1.5rem; }
+	.benefit-card h3 { font-size: 1.2rem; margin: 0 0 1rem; color: var(--accent-color); position: relative; }
+	.benefit-card p { font-size: 0.95rem; color: #555; margin: 0; line-height: 1.6; }
+
+	/* Info Sections */
+	.info-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-bottom: 6rem; }
+	.info-card { background: #fafafa; padding: 2.5rem; border-radius: 15px; height: 100%; box-sizing: border-box; }
+	
+	.fee-row { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; border-bottom: 1px solid #ddd; }
+	.price { font-size: 1.25rem; font-weight: bold; }
+	.fee-note { font-size: 0.85rem; color: #888; margin-top: 1.5rem; }
+
+	.step-list { padding-left: 1.2rem; margin: 0; }
+	.step-list li { margin-bottom: 1rem; line-height: 1.5; color: #444; }
+
+	/* CTA Area */
+	.cta-area { text-align: center; padding-top: 2rem; border-top: 1px solid #eee; }
+	.join-btn { 
+		display: inline-block; 
+		padding: 1.2rem 4rem; 
+		background: var(--accent-color); 
+		color: white; 
+		text-decoration: none; 
+		border-radius: 50px; 
+		font-weight: bold; 
+		font-size: 1.2rem;
+		transition: transform 0.2s, box-shadow 0.2s;
+		box-shadow: 0 4px 14px rgba(0, 112, 243, 0.39);
+	}
+	.join-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0, 112, 243, 0.23); }
+	.small { font-size: 0.85rem; color: #888; margin-top: 1.5rem; }
+
+	@media (max-width: 768px) {
+		.benefits-grid, .info-wrapper { grid-template-columns: 1fr; }
+		h1 { font-size: 2.5rem; }
+	}
+</style>

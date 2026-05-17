@@ -1,0 +1,78 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const pageTitle = "Services | にちか.com";
+---
+
+<BaseLayout title={pageTitle}>
+	<main class="container">
+		<div class="page-header">
+			<h1>Services</h1>
+			<p class="lead">技術と個性を活かし、新しい価値を創造するお手伝いをします。</p>
+		</div>
+
+		<div class="services-list">
+			<section class="service-item">
+				<div class="service-content">
+					<h2>01. 農業のIoT化に関するご相談</h2>
+					<p>
+						IoTセンサーの導入からデータ活用まで、現場に即したスマート農業の構築をサポートします。
+						「何から始めていいかわからない」「コストを抑えて導入したい」といったお悩みに対し、
+						エンジニアとしての知見と農場での実践経験を活かした最適なソリューションを提案します。
+					</p>
+					<ul class="features">
+						<li>土壌・環境センサーの選定と設置支援</li>
+						<li>リモート監視システムの構築</li>
+						<li>収集データの分析と栽培管理へのフィードバック</li>
+					</ul>
+				</div>
+			</section>
+
+			<section class="service-item">
+				<div class="service-content">
+					<h2>02. CM出演へのご相談</h2>
+					<p>
+						「農業 × エンジニア × 旅人」という独自のバックグラウンドと、
+						飾らないキャラクターを活かしたプロモーションのお手伝いをいたします。
+						製品の魅力を技術的な視点とユーザーとしての視点の両方から伝えることが可能です。
+					</p>
+					<ul class="features">
+						<li>テレビ・Web広告の出演</li>
+						<li>ブランドアンバサダー活動</li>
+						<li>SNSを通じたタイアップ企画</li>
+					</ul>
+				</div>
+			</section>
+		</div>
+
+		<div class="contact-cta">
+			<p>各サービスの詳細や費用については、お気軽にお問い合わせください。</p>
+			<a href="/contact" class="btn">お問い合わせはこちら</a>
+		</div>
+	</main>
+</BaseLayout>
+
+<style>
+	.container { max-width: 900px; margin: 0 auto; padding: 8rem 1rem 4rem; }
+	.page-header { margin-bottom: 4rem; text-align: center; }
+	h1 { font-size: 3rem; margin-bottom: 1rem; }
+	.lead { font-size: 1.2rem; color: #666; }
+
+	.services-list { display: flex; flex-direction: column; gap: 4rem; }
+	.service-item { background: #fafafa; padding: 3rem; border-radius: 20px; border-left: 8px solid var(--accent-color); }
+	.service-item h2 { margin-top: 0; font-size: 1.8rem; color: #333; }
+	.service-item p { font-size: 1.1rem; line-height: 1.8; color: #444; }
+
+	.features { margin-top: 1.5rem; padding-left: 1.2rem; }
+	.features li { margin-bottom: 0.5rem; position: relative; list-style: none; }
+	.features li::before { content: "✔"; color: var(--accent-color); position: absolute; left: -1.5rem; font-weight: bold; }
+
+	.contact-cta { margin-top: 6rem; text-align: center; padding: 4rem; background: #333; color: white; border-radius: 20px; }
+	.btn { display: inline-block; margin-top: 1.5rem; padding: 1rem 2.5rem; background: var(--accent-color); color: white; text-decoration: none; border-radius: 30px; font-weight: bold; transition: opacity 0.2s; }
+	.btn:hover { opacity: 0.9; }
+
+	@media (max-width: 768px) {
+		.service-item { padding: 1.5rem; }
+		h1 { font-size: 2.5rem; }
+	}
+</style>
