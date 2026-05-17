@@ -1,0 +1,72 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const allPosts = await getCollection('blog');
+  const uniqueCategories = [...new Set(allPosts.map((post) => post.data.category))];
+
+  return uniqueCategories.map((category) => {
+    const filteredPosts = allPosts
+      .filter((post) => post.data.category === category)
+      .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+    return {
+      params: { category },
+      props: { posts: filteredPosts },
+    };
+  });
+}
+
+const { category } = Astro.params;
+const { posts } = Astro.props;
+
+// フィルターボタン用に全記事を取得してカテゴリーリストを作成
+const allPosts = await getCollection('blog');
+const categories = [...new Set(allPosts.map((post) => post.data.category))];
+---
+
+<BaseLayout title={`Category: ${category} | にちか.com`}>
+	<main class="container">
+		<h1>カテゴリー: {category}</h1>
+
+		<section>
+			<div class="category-list">
+				<span class="category-label">Filter:</span>
+				<a href="/blog" class="category-link">All</a>
+				{categories.map((cat) => (
+					<a href={`/blog/category/${cat}`} class={`category-link ${cat === category ? 'active' : ''}`}>{cat}</a>
+				))}
+			</div>
+		</section>
+
+		<section>
+			{posts.map((post) => (
+				<article class="post-item">
+					<time class="post-date">{post.data.pubDate.toLocaleDateString('ja-JP')}</time>
+					<h2 class="post-title">
+						<a href={`/blog/${post.id}`}>{post.data.title}</a>
+					</h2>
+					<p>{post.data.description}</p>
+				</article>
+			))}
+		</section>
+	</main>
+</BaseLayout>
+
+<style>
+      .container { max-width: 900px; margin: 0 auto; padding: 6rem 1rem; }
+
+      /* Category Filter Styles */
+      .category-list { margin-bottom: 4rem; display: flex; gap: 0.8rem; flex-wrap: wrap; align-items: center; }
+      .category-label { font-weight: bold; font-size: 0.9rem; margin-right: 0.5rem; }
+      .category-link { padding: 0.5rem 1rem; background: #f4f4f4; border-radius: 30px; text-decoration: none; color: #666; font-size: 0.85rem; transition: all 0.3s; }
+      .category-link:hover { background: #0070f3; color: white !important; }
+      .category-link.active { background: #0070f3; color: white !important; }
+
+      h1 { border-left: 5px solid #0070f3; padding-left: 1rem; margin-bottom: 3rem; }
+      .post-item { margin-bottom: 2.5rem; border-bottom: 1px solid #eee; padding-bottom: 1.5rem; }
+      .post-date { color: #888; font-size: 0.9rem; }
+      .post-title { font-size: 1.8rem; margin: 0.5rem 0; }
+      .post-title a { text-decoration: none; color: #222; }
+      .post-title a:hover { color: #0070f3; }
+    </style>

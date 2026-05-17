@@ -1,0 +1,42 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const blogEntries = await getCollection('blog');
+  return blogEntries.map(entry => ({
+    params: { slug: entry.id }, props: { entry },
+  }));
+}
+
+interface Props {
+  entry: CollectionEntry<'blog'>;
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<BaseLayout title={`${entry.data.title} | にちか.com`} description={entry.data.description}>
+	<main class="content-container">
+		<div class="post-header">
+			<p class="post-date">{entry.data.pubDate.toLocaleDateString('ja-JP')}</p>
+			<h1 class="post-title">{entry.data.title}</h1>
+			<span class="category-tag">{entry.data.category}</span>
+		</div>
+		<article class="markdown-body">
+			<Content />
+		</article>
+	</main>
+</BaseLayout>
+
+<style>
+			.content-container {
+				max-width: 800px;
+				margin: 8rem auto;
+				padding: 0 1rem;
+			}
+			.post-header { margin-bottom: 2rem; }
+			.post-title { font-size: 2.5rem; }
+			.post-date { color: #666; }
+</style>
