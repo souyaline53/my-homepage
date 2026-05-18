@@ -27,6 +27,7 @@ const categories = [...new Set(allPosts.map((post) => post.data.category))];
 
 <BaseLayout title={`Category: ${category} | にちか.com`}>
 	<main class="container">
+    
 		<h1>カテゴリー: {category}</h1>
 
 		<section>
@@ -38,6 +39,22 @@ const categories = [...new Set(allPosts.map((post) => post.data.category))];
 				))}
 			</div>
 		</section>
+
+		<div class="external-links">
+			<p class="notice-text">最新の活動はこちらもチェックしてください！</p>
+			<div class="button-group">
+				<a href="https://zenn.dev/nasubikun0001" target="_blank" rel="noopener noreferrer" class="btn-external zenn-box">
+					<span class="btn-icon">🚀</span>
+					<span class="btn-title">技術ブログ (Zenn)</span>
+					<span class="btn-desc">最新の技術スタックや開発知見はこちら</span>
+				</a>
+				<a href="https://note.com/souyaline53" target="_blank" rel="noopener noreferrer" class="btn-external note-box">
+					<span class="btn-icon">🌿</span>
+					<span class="btn-title">農業日記 (note)</span>
+					<span class="btn-desc">日々の農作業の記録</span>
+				</a>
+			</div>
+		</div>
 
 		<section>
 			{posts.map((post) => (
@@ -64,6 +81,33 @@ const categories = [...new Set(allPosts.map((post) => post.data.category))];
       .category-link.active { background: #0070f3; color: white !important; }
 
       h1 { border-left: 5px solid #0070f3; padding-left: 1rem; margin-bottom: 3rem; }
+
+      /* External Link Buttons */
+      .external-links { margin: 0 0 5rem 0; }
+      .notice-text { color: #888; font-size: 0.85rem; margin-bottom: 1.2rem; font-weight: 500; letter-spacing: 0.05em; }
+      .button-group { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+      .btn-external {
+        display: flex; flex-direction: column; align-items: center; justify-content: center;
+        padding: 1.5rem 1rem; border-radius: 16px; text-decoration: none;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); text-align: center;
+        background: #fff; border: 1px solid #eaeaea; position: relative; overflow: hidden;
+      }
+      .btn-external::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 4px; }
+      .zenn-box::before { background: #3ea8ff; }
+      .note-box::before { background: #2cb696; }
+
+      .btn-external:hover { transform: translateY(-5px); box-shadow: 0 12px 24px rgba(0,0,0,0.08); border-color: transparent; }
+      .zenn-box:hover { background: #f0f8ff; }
+      .note-box:hover { background: #f0fff4; }
+
+      .btn-icon { font-size: 1.8rem; margin-bottom: 0.6rem; }
+      .btn-title { font-size: 1rem; font-weight: 800; margin-bottom: 0.4rem; color: #333; }
+      .btn-desc { font-size: 0.8rem; color: #777; line-height: 1.5; }
+
+      @media (max-width: 600px) {
+        .button-group { grid-template-columns: 1fr; }
+      }
+
       .post-item { margin-bottom: 2.5rem; border-bottom: 1px solid #eee; padding-bottom: 1.5rem; }
       .post-date { color: #888; font-size: 0.9rem; }
       .post-title { font-size: 1.8rem; margin: 0.5rem 0; }
