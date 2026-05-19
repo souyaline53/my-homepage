@@ -28,19 +28,17 @@ const categories = [...new Set(allPosts.map((post) => post.data.category))];
 <BaseLayout title={`Category: ${category} | にちか.com`}>
 	<main class="container">
     
-		<h1>カテゴリー: {category}</h1>
-
-		<section>
+		<h1>Blog Archive (記事一覧)</h1>
+    <section>
 			<div class="category-list">
-				<span class="category-label">Filter:</span>
+				<span class="category-label">カテゴリーで記事を絞る:</span>
 				<a href="/blog" class="category-link">All</a>
 				{categories.map((cat) => (
 					<a href={`/blog/category/${cat}`} class={`category-link ${cat === category ? 'active' : ''}`}>{cat}</a>
 				))}
 			</div>
 		</section>
-
-		<div class="external-links">
+    <div class="external-links">
 			<p class="notice-text">最新の活動はこちらもチェックしてください！</p>
 			<div class="button-group">
 				<a href="https://zenn.dev/nasubikun0001" target="_blank" rel="noopener noreferrer" class="btn-external zenn-box">
@@ -74,7 +72,7 @@ const categories = [...new Set(allPosts.map((post) => post.data.category))];
       .container { max-width: 900px; margin: 0 auto; padding: 6rem 1rem; }
 
       /* Category Filter Styles */
-      .category-list { margin-bottom: 4rem; display: flex; gap: 0.8rem; flex-wrap: wrap; align-items: center; }
+      .category-list { margin-bottom: 2rem; display: flex; gap: 0.8rem; flex-wrap: wrap; align-items: center; }
       .category-label { font-weight: bold; font-size: 0.9rem; margin-right: 0.5rem; }
       .category-link { padding: 0.5rem 1rem; background: #f4f4f4; border-radius: 30px; text-decoration: none; color: #666; font-size: 0.85rem; transition: all 0.3s; }
       .category-link:hover { background: #0070f3; color: white !important; }
@@ -83,8 +81,8 @@ const categories = [...new Set(allPosts.map((post) => post.data.category))];
       h1 { border-left: 5px solid #0070f3; padding-left: 1rem; margin-bottom: 3rem; }
 
       /* External Link Buttons */
-      .external-links { margin: 0 0 5rem 0; }
-      .notice-text { color: #888; font-size: 0.85rem; margin-bottom: 1.2rem; font-weight: 500; letter-spacing: 0.05em; }
+      .external-links { background: #f7faee; margin: 0 0 1rem 0; padding: 2rem;border-radius: 12px;margin-bottom: 5rem;}
+      .notice-text { color: #888; font-size: 0.85rem; margin-bottom: 0.7rem; font-weight: 500; letter-spacing: 0.05em; }
       .button-group { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
       .btn-external {
         display: flex; flex-direction: column; align-items: center; justify-content: center;
