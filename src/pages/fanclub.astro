@@ -54,12 +54,12 @@ const pageTitle = "Fan Club | にち~か.com";
 				<h2 class="section-title">会費について / Fees</h2>
 				<div class="info-card">
 					<div class="fee-row">
-						<span>入会金</span>
-						<span class="price">1,000円 <small>(税込)</small></span>
+						<span>無料会員</span>
+						<span class="price">無料 <small>(永年)</small></span>
 					</div>
 					<div class="fee-row">
 						<span>年会費</span>
-						<span class="price">5,000円 <small>(税込)</small></span>
+						<span class="price">300円 <small></small></span>
 					</div>
 					<p class="fee-note">※更新時の事務手数料はかかりません。2年目以降は年会費のみで継続いただけます。自動更新となります。</p>
 				</div>
@@ -78,7 +78,8 @@ const pageTitle = "Fan Club | にち~か.com";
 		</div>
 
 		<div class="cta-area">
-			<a href="/contact" class="join-btn">入会を申し込む</a>
+			<button type="button" class="join-btn disabled" disabled>入会を申し込む</button>
+			<p class="suspension-notice">※現在会員登録を停止中です。</p>
 			<p class="small">※お手続き完了後、1ヶ月以内に初回の会員特典をお送りします。サービスは予告なく終了する場合があります。</p>
 		</div>
 	</main>
@@ -122,11 +123,29 @@ const pageTitle = "Fan Club | にち~か.com";
 		border-radius: 50px; 
 		font-weight: bold; 
 		font-size: 1.2rem;
+		border: none;
+		font-family: inherit;
+		cursor: pointer;
 		transition: transform 0.2s, box-shadow 0.2s;
 		box-shadow: 0 4px 14px rgba(0, 112, 243, 0.39);
 	}
-	.join-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0, 112, 243, 0.23); }
-	.small { font-size: 0.85rem; color: #888; margin-top: 1.5rem; }
+	.join-btn:hover:not(:disabled):not(.disabled) { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0, 112, 243, 0.23); }
+	.join-btn:disabled,
+	.join-btn.disabled {
+		background: #ccc;
+		color: #fff;
+		cursor: not-allowed;
+		box-shadow: none;
+		transform: none;
+	}
+	.suspension-notice {
+		color: #d32f2f;
+		font-weight: bold;
+		font-size: 1.05rem;
+		margin-top: 1.5rem;
+		margin-bottom: 0.5rem;
+	}
+	.small { font-size: 0.85rem; color: #888; margin-top: 0.5rem; }
 
 	@media (max-width: 768px) {
 		.benefits-grid, .info-wrapper { grid-template-columns: 1fr; }
